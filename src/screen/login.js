@@ -1,29 +1,16 @@
-import React from 'react';
-import {
-    StyleSheet,
-    Text,
-    View,
-    Image,
-    TouchableOpacity,
-} from 'react-native';
-
+import React from "react";
+import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 
 export function login() {
-    return (
-        <View>
-            <Text>
-                hola
-            </Text>
-        </View>
-    );
+  return (
+    <View>
+      <TextForm placeHolder="Nombre"></TextForm>
+    </View>
+  );
 }
 const styles = StyleSheet.create({
-    container: {
-        justifyContent: 'center',
-        alignItems: 'center',
-    }
-
-})
-
-
-
+  container: {
+    justifyContent: "center",
+    alignItems: "center"
+  }
+});
