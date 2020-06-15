@@ -12,7 +12,7 @@ import { TextInput } from "react-native-gesture-handler";
 export default function App(props) {
     return (
         <View>
-            <Text>Home</Text>
+            <Text>Contraseña</Text>
         </View>
     );
 }
