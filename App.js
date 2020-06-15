@@ -1,27 +1,37 @@
 import React from "react";
-import Home from "./src/screen/home";
-import Login from "./src/screen/login";
-import Registro from "./src/screen/registro";
-import Contraseña from "./src/screen/contraseña";
-import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
-import { NavigationContainer } from "@react-navigation/native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Image,
+  TouchableOpacity,
+  AsyncStorage
+} from "react-native";
+import AppContext from "./AppContext";
 import { createStackNavigator } from "@react-navigation/stack";
+import AuthNavigation from "./src/navigation/AuthNavigation";
+import AppNavigation from "./src/navigation/AppNavigation";
+
+const KEY_USER_INFO = "KEY_USER_INFO";
 
 const Stack = createStackNavigator();
 
+const saveUserInfo = user => {
+  AsyncStorage.setItem(KEY_USER_INFO, JSON.stringify(user));
+};
+
+const getUserInfo = async () => {
+  const user = await AsyncStorage.getItem(KEY_USER_INFO);
+  return user;
+};
+
 export default function App() {
-    return (
-        <NavigationContainer>
-            <Stack.Navigator>
-                <Stack.Screen
-                    name="Login"
-                    component={Login}
-                    options={{ header: () => null }}
-                />
-                <Stack.Screen name="Home" component={Home} />
-                <Stack.Screen name="Registro" component={Registro} />
-                <Stack.Screen name="Contraseña" component={Contraseña} />
-            </Stack.Navigator>
-        </NavigationContainer>
-    );
+  const [] = React.useState();
+
+  return (
+    <AppContext.Provider>
+      <AuthNavigation></AuthNavigation>
+      {/* <AppNavigation></AppNavigation> */}
+    </AppContext.Provider>
+  );
 }
